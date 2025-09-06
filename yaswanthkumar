@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clothing Store Dashboard</title>
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #1a1a2e;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background-color: white;
+      flex: 1;
+      min-width: 200px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 1.2em;
+    }
+
+    .card p {
+      font-size: 1.5em;
+      margin: 0;
+      color: #007bff;
+    }
+
+    .chart-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+
+    .top-products {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .top-products ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .top-products li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .top-products li:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Clothing Store Dashboard</h1>
+  </header>
+
+  <div class="container">
+    <!-- Stats Cards -->
+    <div class="cards">
+      <div class="card">
+        <h2>Total Sales</h2>
+        <p>$25,000</p>
+      </div>
+      <div class="card">
+        <h2>Customers</h2>
+        <p>1,245</p>
+      </div>
+      <div class="card">
+        <h2>Products</h2>
+        <p>320</p>
+      </div>
+      <div class="card">
+        <h2>Orders</h2>
+        <p>578</p>
+      </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="chart-container">
+      <h2>Sales Over Time</h2>
+      <canvas id="salesChart" height="100"></canvas>
+    </div>
+
+    <!-- Top Products -->
+    <div class="top-products">
+      <h2>Best Selling Products</h2>
+      <ul>
+        <li>🧥 Denim Jacket - 120 sold</li>
+        <li>👚 White T-shirt - 95 sold</li>
+        <li>👖 Skinny Jeans - 80 sold</li>
+        <li>👕 Polo Shirt - 75 sold</li>
+        <li>👗 Summer Dress - 65 sold</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('salesChart').getContext('2d');
+    const salesChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+        datasets: [{
+          label: 'Monthly Sales ($)',
+          data: [4000, 4500, 6000, 7000, 8500, 10000],
+          borderColor: '#007bff',
+          backgroundColor: 'rgba(0, 123, 255, 0.1)',
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top'
+          },
+          title: {
+            display: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
